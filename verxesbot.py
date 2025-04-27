@@ -1,4 +1,3 @@
-
 import os
 import random
 import datetime
@@ -9,7 +8,7 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, InputFi
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, CallbackContext
 
 # === CONFIGURATION ===
-TOKEN = os.environ.get("8052576438:AAFEO22a7wa_50buftZ5Qrag6QBcpzhsK7w")
+TOKEN = os.environ.get("BOT_TOKEN")  # <-- Corrected here
 ADMIN_ID = 5784227087
 DATABASE_DIR = "database"
 ACCESS_FILE = "access.json"
@@ -35,20 +34,12 @@ def save_access():
 
 # === BANNER ===
 def banner():
-    return "🌀 *VerxesHub*"
-───────────────
-
-"
+    return "🌀 *VerxesHub*\n───────────────\n"
 
 # === START COMMAND ===
 async def start(update: Update, context: CallbackContext):
     await update.message.reply_text(
-        banner() + "🚀 *Welcome to VerxesHub!*
-
-🔑 Use `/key <your_access_key>` to unlock tools.
-📂 Use `/generate` after unlocking.
-
-🧠 Use `/help` for all commands.",
+        banner() + "🚀 *Welcome to VerxesHub!*\n\n🔑 Use `/key <your_access_key>` to unlock tools.\n📂 Use `/generate` after unlocking.\n\n🧠 Use `/help` for all commands.",
         parse_mode="Markdown"
     )
 
@@ -63,8 +54,9 @@ async def help_command(update: Update, context: CallbackContext):
 🛡️ `/listaccess` - Admin: View users
 ❌ `/revoke <user_id>` - Admin: Revoke user
 🎯 `/genkey <time>` - Admin: Generate key
-📤 `/uploadfile` - Admin: Upload new database files
-""", parse_mode="Markdown")
+📤 `/uploadfile` - Admin: Upload new database files""",
+        parse_mode="Markdown"
+    )
 
 # === GENERATE KEY ===
 async def generate_key(update: Update, context: CallbackContext):
@@ -187,9 +179,7 @@ async def list_access(update: Update, context: CallbackContext):
     if update.message.from_user.id != ADMIN_ID:
         await update.message.reply_text(banner() + "❌ *Admin only!*", parse_mode="Markdown")
         return
-    text = banner() + "📋 *Active Users:*
-
-"
+    text = banner() + "📋 *Active Users:*\n\n"
     if not USER_ACCESS:
         text += "🚫 No users found."
     else:
