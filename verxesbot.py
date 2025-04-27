@@ -9,7 +9,7 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, InputFi
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, CallbackContext
 
 # === CONFIGURATION ===
-TOKEN = os.environ.get("BOT_TOKEN")
+TOKEN = os.environ.get("8052576438:AAFEO22a7wa_50buftZ5Qrag6QBcpzhsK7w")
 ADMIN_ID = 5784227087
 DATABASE_DIR = "database"
 ACCESS_FILE = "access.json"
