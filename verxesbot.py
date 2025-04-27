@@ -35,7 +35,7 @@ def save_access():
 
 # === BANNER ===
 def banner():
-    return "🌀 *VerxesHub*
+    return "🌀 *VerxesHub*"
 ───────────────
 
 "
